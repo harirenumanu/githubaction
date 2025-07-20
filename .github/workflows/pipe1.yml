@@ -5,7 +5,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
             - name: Running commands on server
               run: echo "Running commands on server"
             - name: Third step
@@ -14,4 +14,23 @@ jobs:
               run: |
                 pwd 
                 ls
-                
+            - name: AWS Credentials
+              uses: aws-actions/configure-aws-credentials@v1
+              with:
+                aws-access-key-id: ${{ secrets.ACCESS_KEY }}
+                aws-secret-access-key: ${{ secrets.SECRET_KEY }}
+                aws-region: ${{ secrets.REGION }}
+            - name: Login to Amazon ECR
+              uses: aws-actions/amazon-ecr-login@v1
+              id: login-ecr-public
+              with:
+                registry-type: private
+                registry: 353388156300.dkr.ecr.us-east-1.amazonaws.com/hrenumanu:latest
+            - name: Building Docker image
+              run: |
+                docker build -t my-nginx-image ../../
+                docker tag hrenumanu:latest 353388156300.dkr.ecr.us-east-1.amazonaws.com/hrenumanu:latest
+                docker push 353388156300.dkr.ecr.us-east-1.amazonaws.com/hrenumanu:latest
+            
+
+              
