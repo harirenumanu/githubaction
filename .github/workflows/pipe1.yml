@@ -10,3 +10,8 @@ jobs:
               run: echo "Running commands on server"
             - name: Third step
               run: touch demo.txt
+            - name: pwd
+              run: |
+                pwd 
+                ls
+                
