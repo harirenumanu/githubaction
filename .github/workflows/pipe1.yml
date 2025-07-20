@@ -8,3 +8,5 @@ jobs:
               uses: actions/checkout@v2
             - name: Running commands on server
               run: echo "Running commands on server"
+            - name: Third step
+              run: touch demo.txt
