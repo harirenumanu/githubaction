@@ -27,8 +27,8 @@ jobs:
                 registry-type: private
                 registry: 353388156300.dkr.ecr.us-east-1.amazonaws.com/hrenumanu:latest
             - name: Building Docker image
-              run: |
-                docker build -t my-nginx-image  -f ../Dockerfile
+              run: | 
+                docker build -t my-nginx-image  -f .github/Dockerfile .
                 docker tag hrenumanu:latest 353388156300.dkr.ecr.us-east-1.amazonaws.com/hrenumanu:latest
                 docker push 353388156300.dkr.ecr.us-east-1.amazonaws.com/hrenumanu:latest
             
