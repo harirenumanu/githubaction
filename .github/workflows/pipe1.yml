@@ -1,0 +1,10 @@
+name: first-pipeline
+on: [push]
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+            - name: Running commands on server
+              run: echo "Running commands on server"
