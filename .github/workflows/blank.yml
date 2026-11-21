@@ -1,0 +1,17 @@
+name: three
+on:
+  workflow_dispatch:
+jobs:
+  checkout:
+    name: checkout
+    steps:
+      - echo "this is checkout stage"
+  build:
+    name: build stage
+    steps:
+      - echo "this is build stage"  
+  deploy:
+    name: deploy stage
+    steps:
+      - echo "this is deploy stage.."
+  
